@@ -3,6 +3,10 @@
 //
 // let begin = require('@architect/functions')
 
+// HTTP function
+exports.handler = async function http(req) {
+  console.log(req)
+  
 let html = `
 <!doctype html>
 <html lang=en>
@@ -17,7 +21,7 @@ let html = `
       Hello world!
     </h1>
     <p class="center-text">
-      Your new route is ready to go!
+      Your new route is ready to go! Your bar param is ${req.params.bar}, btw.
     </p>
     <p class="center-text">
       Learn more about building <a href="https://docs.begin.com/en/functions/http/" class="link" target="_blank">Begin HTTP functions here</a>.
@@ -25,10 +29,6 @@ let html = `
   </body>
 </html>
 `
-
-// HTTP function
-exports.handler = async function http(req) {
-  console.log(req)
   return {
     headers: {
       'content-type': 'text/html; charset=utf8'
